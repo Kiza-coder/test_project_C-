@@ -1,5 +1,8 @@
 # Ignore Visual Studio Code directory
 .vscode/
+.vs/
+.config/
+
 
 # Ignore MonoDevelop/Xamarin Studio specific files
 .idea/
