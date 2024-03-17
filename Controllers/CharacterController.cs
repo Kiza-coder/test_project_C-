@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using test_project.Services.CharacterService;
 using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 namespace test_project.Controllers;
 
@@ -22,14 +23,17 @@ namespace test_project.Controllers;
         {
             _characterService = characterService;
         }
-        [AllowAnonymous]
+
+    
         [HttpGet("GetAll")]
         public async Task<ActionResult<ServiceResponse<List<GetCharacterResponseDto>>>> Get() {
-            return Ok(await _characterService.GetAllCharacters());
+            int userId = int.Parse(User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)!.Value);
+            return Ok(await _characterService.GetAllCharacters(userId));
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<ServiceResponse<GetCharacterResponseDto>>> GetSingle(int id) {
+
             return Ok(await _characterService.GetCharacterById(id));
         }
 
