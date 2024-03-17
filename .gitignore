@@ -1,0 +1,37 @@
+# Ignore Visual Studio Code directory
+.vscode/
+
+# Ignore MonoDevelop/Xamarin Studio specific files
+.idea/
+*.sln.docstates
+
+# Ignore build output directories
+bin/
+obj/
+
+# Ignore user-specific files
+*.user
+*.userprefs
+*.suo
+
+# Ignore NuGet package directory
+packages/
+
+# Ignore build artifacts
+*.dll
+*.exe
+*.pdb
+*.dll.config
+*.exe.config
+*.log
+
+# Ignore Node.js dependencies if you're using Node.js in your project
+node_modules/
+
+# Ignore npm-debug.log
+npm-debug.log
+
+# Ignore .NET Core specific files
+project.lock.json
+project.fragment.lock.json
+artifacts/
