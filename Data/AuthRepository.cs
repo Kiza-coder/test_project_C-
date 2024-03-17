@@ -104,7 +104,7 @@ namespace test_project.Data
 
             };
 
-            var appSettingsToken = _configuration.GetSection("AppSettings :Token").Value;
+            var appSettingsToken = _configuration.GetSection("AppSettings:Token").Value;
             if(appSettingsToken is null)
             {
                 throw new Exception("Appsettings Token is null");

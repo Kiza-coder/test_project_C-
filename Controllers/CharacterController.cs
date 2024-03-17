@@ -5,9 +5,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using test_project.Services.CharacterService;
+using Microsoft.AspNetCore.Authorization;
 
 namespace test_project.Controllers;
 
+[Authorize]
 [ApiController]
 [Route("api/[controller]")]
     public class CharacterController : ControllerBase
@@ -20,7 +22,7 @@ namespace test_project.Controllers;
         {
             _characterService = characterService;
         }
-
+        [AllowAnonymous]
         [HttpGet("GetAll")]
         public async Task<ActionResult<ServiceResponse<List<GetCharacterResponseDto>>>> Get() {
             return Ok(await _characterService.GetAllCharacters());
