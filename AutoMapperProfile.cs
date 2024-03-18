@@ -9,6 +9,7 @@ namespace test_project
             CreateMap<Character, GetCharacterResponseDto>();
             CreateMap<AddCharacterRequestDto, Character>();
             CreateMap<UpdateCharacterRequestDto, Character>();
+            CreateMap<Weapon, GetWeaponResponseDto>(); 
         }
     }
 }

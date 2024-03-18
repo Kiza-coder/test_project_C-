@@ -1,11 +1,14 @@
 global using test_project.Models;
 global using test_project.Services.CharacterService;
+global using test_project.Services.WeaponService;
 global using test_project.Dtos.Character;
 global using test_project.Dtos.User;
+global using test_project.Dtos.Weapon;
+global using test_project.Data;
+
 global using AutoMapper;
 global using Microsoft.EntityFrameworkCore;
 
-global using test_project.Data;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Swashbuckle.AspNetCore.Filters;
@@ -34,6 +37,7 @@ builder.Services.AddSwaggerGen(c => {
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
 builder.Services.AddScoped<ICharacterService, CharacterService>();
 builder.Services.AddScoped<IAuthRepository, AuthRepository>();
+builder.Services.AddScoped<IWeaponService, WeaponService>();
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
@@ -46,6 +50,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidateAudience = false
         };
      });
+builder.Services.AddHttpContextAccessor();
 
 var app = builder.Build();
 

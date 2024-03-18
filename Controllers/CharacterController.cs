@@ -27,8 +27,7 @@ namespace test_project.Controllers;
     
         [HttpGet("GetAll")]
         public async Task<ActionResult<ServiceResponse<List<GetCharacterResponseDto>>>> Get() {
-            int userId = int.Parse(User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)!.Value);
-            return Ok(await _characterService.GetAllCharacters(userId));
+            return Ok(await _characterService.GetAllCharacters());
         }
 
         [HttpGet("{id}")]
@@ -51,7 +50,7 @@ namespace test_project.Controllers;
         
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult<ServiceResponse<GetCharacterResponseDto>>> UpdateCharacter(int id)
+        public async Task<ActionResult<ServiceResponse<GetCharacterResponseDto>>> DeleteCharacter(int id)
         {
             return Ok(await _characterService.DeleteCharacter(id));
         }
