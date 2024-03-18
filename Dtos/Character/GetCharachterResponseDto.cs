@@ -1,3 +1,5 @@
+using test_project.Dtos.Skill;
+
 namespace test_project.Dtos.Character
 {
     public class GetCharacterResponseDto
@@ -10,5 +12,6 @@ namespace test_project.Dtos.Character
         public int Defense { get; set; } = 10;
         public RpgClass Class { get; set; } = RpgClass.Knight;
         public GetWeaponResponseDto? Weapon {get; set;} 
+        public List<GetSkillResponseDto>? Skills {get; set;}
     }
 }

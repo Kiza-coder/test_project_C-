@@ -9,7 +9,7 @@ namespace test_project.Models
     {
         public int Id{get; set;} 
         public string Name{get; set;} = string.Empty;
-        public int Damamge {get; set;} 
+        public int Damage {get; set;} 
         public List<Character>? Characters {get; set;} 
     }
 }

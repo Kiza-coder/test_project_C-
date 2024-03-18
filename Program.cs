@@ -4,6 +4,7 @@ global using test_project.Services.WeaponService;
 global using test_project.Dtos.Character;
 global using test_project.Dtos.User;
 global using test_project.Dtos.Weapon;
+global using test_project.Dtos.Skill;
 global using test_project.Data;
 
 global using AutoMapper;

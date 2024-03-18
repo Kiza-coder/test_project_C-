@@ -8,6 +8,7 @@ namespace test_project.Services.CharacterService
         Task<ServiceResponse<List<GetCharacterResponseDto>>> AddCharacter(AddCharacterRequestDto newCharacter);
         Task<ServiceResponse<GetCharacterResponseDto>> UpdateCharacter(UpdateCharacterRequestDto updatedCharacter);
         Task<ServiceResponse<List<GetCharacterResponseDto>>> DeleteCharacter(int id);
+        Task<ServiceResponse<GetCharacterResponseDto>> AddCharacterSkill(AddCharacterSkillRequestDto newCharacterSkill);
 
 
     }
