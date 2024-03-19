@@ -11,7 +11,11 @@ namespace test_project.Dtos.Character
         public int Intelligence { get; set; } = 10;
         public int Defense { get; set; } = 10;
         public RpgClass Class { get; set; } = RpgClass.Knight;
-        public GetWeaponResponseDto? Weapon {get; set;} 
-        public List<GetSkillResponseDto>? Skills {get; set;}
+        public GetWeaponResponseDto? Weapon { get; set; }
+        public List<GetSkillResponseDto>? Skills { get; set; }
+        public int Fights { get; set; }
+        public int Defeats { get; set; }
+        public int Victories { get; set; }
+        
     }
 }

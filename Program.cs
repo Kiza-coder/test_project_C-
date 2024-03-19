@@ -1,11 +1,15 @@
 global using test_project.Models;
+global using test_project.Data;
+
 global using test_project.Services.CharacterService;
 global using test_project.Services.WeaponService;
+global using test_project.Services.FightService;
+
 global using test_project.Dtos.Character;
 global using test_project.Dtos.User;
 global using test_project.Dtos.Weapon;
 global using test_project.Dtos.Skill;
-global using test_project.Data;
+global using test_project.Dtos.Fight;
 
 global using AutoMapper;
 global using Microsoft.EntityFrameworkCore;
@@ -36,9 +40,13 @@ builder.Services.AddSwaggerGen(c => {
 });
 
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
+
 builder.Services.AddScoped<ICharacterService, CharacterService>();
 builder.Services.AddScoped<IAuthRepository, AuthRepository>();
 builder.Services.AddScoped<IWeaponService, WeaponService>();
+builder.Services.AddScoped<IFightService, FightService>();
+
+
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
@@ -51,6 +59,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidateAudience = false
         };
      });
+
 builder.Services.AddHttpContextAccessor();
 
 var app = builder.Build();
