@@ -1,8 +1,10 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 
 namespace test_project.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("[controller]")]
     public class FightController : ControllerBase
@@ -17,6 +19,12 @@ namespace test_project.Controllers
         public async Task<ActionResult<ServiceResponse<AttackResultResponseDto>>> WeaponAttack(WeaponAttackRequestDto request)
         {
             return Ok(await _fightService.WeaponAttack(request));
+        }
+
+        [HttpPost("Skill")]
+        public async Task<ActionResult<ServiceResponse<AttackResultResponseDto>>> SkillAttack(SkillAttackRequestDto request)
+        {
+            return Ok(await _fightService.SkillAttack(request));
         }
     }
 }

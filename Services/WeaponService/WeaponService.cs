@@ -15,6 +15,9 @@ namespace test_project.Services.WeaponService
             _context = context;
             _httpContextAccessor = httpContextAccessor;
         }
+
+                private int GetUserId() => int.Parse(_httpContextAccessor.HttpContext!.User.FindFirstValue(ClaimTypes.NameIdentifier)!);
+
         public async Task<ServiceResponse<GetCharacterResponseDto>> AddWeapon(AddWeaponRequestDto newWeapon)
         {
            var response = new ServiceResponse<GetCharacterResponseDto>();
@@ -23,7 +26,7 @@ namespace test_project.Services.WeaponService
            {   
                 var character = await _context.Characters
                     .FirstOrDefaultAsync(c => c.Id == newWeapon.CharacterId &&
-                    c.User!.Id == int.Parse(_httpContextAccessor.HttpContext!.User.FindFirstValue(ClaimTypes.NameIdentifier)!));
+                    c.User!.Id == GetUserId());
                 
                 if(character is null)
                 {
