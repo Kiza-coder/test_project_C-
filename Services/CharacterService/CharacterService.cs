@@ -15,10 +15,6 @@ namespace test_project.Services.CharacterService
             _httpContextAccessor = httpContextAccessor;
         }
 
-        private int GetUserId() => int.Parse(_httpContextAccessor.HttpContext!.User.FindFirstValue(ClaimTypes.NameIdentifier)!);
-        
-        
-        
         public async Task<ServiceResponse<List<GetCharacterResponseDto>>> AddCharacter(AddCharacterRequestDto newCharacter)
         {
             var serviceResponse = new ServiceResponse<List<GetCharacterResponseDto>>();
@@ -29,10 +25,10 @@ namespace test_project.Services.CharacterService
             await _context.SaveChangesAsync();
 
             serviceResponse.Data = await _context.Characters
-                .Where(c => c.User!.Id == GetUserId() )
+                .Where(c => c.User!.Id == GetUserId())
                 .Select(c => _mapper.Map<GetCharacterResponseDto>(c))
                 .ToListAsync();
-            
+
             return serviceResponse;
         }
 
@@ -84,7 +80,7 @@ namespace test_project.Services.CharacterService
             var dbCharacter = await _context.Characters
                 .Include(c => c.Weapon)
                 .Include(c => c.Skills)
-                .FirstOrDefaultAsync(c => c.Id == id && c.User!.Id == GetUserId() );
+                .FirstOrDefaultAsync(c => c.Id == id && c.User!.Id == GetUserId());
             serviceResponse.Data = _mapper.Map<GetCharacterResponseDto>(dbCharacter);
             return serviceResponse;
         }
@@ -137,7 +133,7 @@ namespace test_project.Services.CharacterService
                     .Include(c => c.Skills)
                     .FirstOrDefaultAsync(c => c.Id == newCharacterSkill.CharacterId && c.User!.Id == GetUserId());
 
-                if(character is null )
+                if (character is null)
                 {
                     response.Success = false;
                     response.Message = "Character not found";
@@ -147,8 +143,8 @@ namespace test_project.Services.CharacterService
 
                 var skill = await _context.Skills
                     .FirstOrDefaultAsync(s => s.Id == newCharacterSkill.SkillId);
-                
-                if(skill is null )
+
+                if (skill is null)
                 {
                     response.Success = false;
                     response.Message = "Skill not found";
@@ -161,7 +157,7 @@ namespace test_project.Services.CharacterService
                 response.Data = _mapper.Map<GetCharacterResponseDto>(character);
             }
 
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 response.Success = false;
                 response.Message = ex.Message;
@@ -169,5 +165,7 @@ namespace test_project.Services.CharacterService
 
             return response;
         }
+        private int GetUserId() => int.Parse(_httpContextAccessor.HttpContext!.User.FindFirstValue(ClaimTypes.NameIdentifier)!);
+
     }
 }

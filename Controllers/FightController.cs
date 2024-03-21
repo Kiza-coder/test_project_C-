@@ -32,5 +32,11 @@ namespace test_project.Controllers
         {
             return Ok(await _fightService.Fight(request));
         }
+
+        [HttpGet]
+        public async Task<ActionResult<ServiceResponse<List<HighScoreResponseDto>>>> GetHighScore()
+        {
+            return Ok(await _fightService.GetHighScore());
+        }
     }
 }

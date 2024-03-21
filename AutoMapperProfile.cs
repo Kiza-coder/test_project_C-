@@ -2,7 +2,7 @@ using System.Data.SqlTypes;
 
 namespace test_project
 {
-    public class AutoMapperProfile: Profile
+    public class AutoMapperProfile : Profile
     {
         public AutoMapperProfile()
         {
@@ -10,7 +10,8 @@ namespace test_project
             CreateMap<AddCharacterRequestDto, Character>();
             CreateMap<UpdateCharacterRequestDto, Character>();
             CreateMap<Weapon, GetWeaponResponseDto>();
-            CreateMap<Skill, GetSkillResponseDto>();  
+            CreateMap<Skill, GetSkillResponseDto>();
+            CreateMap<Character, HighScoreResponseDto>();
         }
     }
 }

@@ -12,7 +12,7 @@ namespace test_project.Controllers;
 
 [Authorize]
 [ApiController]
-[Route("api/[controller]")]
+[Route("[controller]")]
     public class CharacterController : ControllerBase
     {
         
