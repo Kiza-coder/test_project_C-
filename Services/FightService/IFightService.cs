@@ -10,6 +10,8 @@ namespace test_project.Services.FightService
     {
         Task<ServiceResponse<AttackResultResponseDto>> WeaponAttack(WeaponAttackRequestDto request);
         Task<ServiceResponse<AttackResultResponseDto>> SkillAttack(SkillAttackRequestDto request);
+        Task<ServiceResponse<FightResultResponseDto>> Fight(FightRequestDto request);
+
 
     }
 }
