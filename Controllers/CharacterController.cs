@@ -1,12 +1,5 @@
-using test_project.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using test_project.Services.CharacterService;
 using Microsoft.AspNetCore.Authorization;
-using System.Security.Claims;
 
 namespace test_project.Controllers;
 
